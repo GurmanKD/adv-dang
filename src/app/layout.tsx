@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import { SeoJsonLd } from "@/components/seo-jsonld";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -58,7 +59,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={inter.className}>
-      <body>{children}</body>
+      <body>
+        <SeoJsonLd />
+        {children}
+      </body>
     </html>
   );
 }
