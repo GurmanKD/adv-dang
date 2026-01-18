@@ -3,6 +3,8 @@ import { Footer } from "@/components/footer";
 import { Container } from "@/components/container";
 import { ButtonLink } from "@/components/button";
 import { site } from "@/lib/site";
+import Image from "next/image";
+import { Badge } from "@/components/badge";
 
 export const metadata = {
   title: "Advocate in Rudrapur | Advocate Dharmendra Singh Dang",
@@ -27,42 +29,51 @@ export default function RudrapurLocationPage() {
           </Container>
         </section>
 
-        <section className="py-12">
+        <section className="py-16">
           <Container>
-            <div className="grid gap-6 md:grid-cols-2">
-              <div className="rounded-2xl border border-slate-200 bg-white p-6">
-                <h2 className="text-lg font-semibold text-slate-900">
-                  Legal Services in Rudrapur
-                </h2>
-                <ul className="mt-4 space-y-2 text-sm text-slate-700">
-                  <li>Criminal law matters</li>
-                  <li>Cheque bounce (NI Act 138)</li>
-                  <li>Family disputes and divorce</li>
-                  <li>Consumer court matters</li>
-                  <li>Motor accident claim cases</li>
-                </ul>
-              </div>
+            <div className="grid items-center gap-12 md:grid-cols-2">
 
-              <div className="rounded-2xl border border-slate-200 bg-white p-6">
-                <h2 className="text-lg font-semibold text-slate-900">
-                  Consultation & Office
-                </h2>
-                <p className="mt-3 text-sm text-slate-700">
-                  {site.chamber}
-                </p>
-                <p className="mt-2 text-sm text-slate-700">
-                  Working hours: {site.hours}
+              {/* LEFT: Text */}
+              <div>
+                <div className="flex flex-wrap gap-2">
+                  <Badge>District & Sessions Court, Rudrapur</Badge>
+                  <Badge>High Court, Nainital</Badge>
+                  <Badge>Practicing since {site.practicingSince}</Badge>
+                </div>
+
+                <h1 className="mt-6 max-w-xl text-3xl font-semibold tracking-tight text-slate-900 md:text-5xl">
+                  {site.name}
+                </h1>
+
+                <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-700 md:text-lg">
+                  Criminal matters, cheque bounce cases (NI Act 138) and family disputes — 
+                  with courtroom-focused guidance and representation.
                 </p>
 
-                <div className="mt-5 flex flex-wrap gap-3">
+                <div className="mt-8 flex flex-wrap gap-3">
                   <ButtonLink href="/contact" variant="primary">
-                    Free Consultation
+                    Free Initial Consultation
                   </ButtonLink>
                   <ButtonLink href={`tel:${site.phones[0]}`} variant="secondary">
-                    Call Now
+                    Call: {site.phones[0]}
                   </ButtonLink>
                 </div>
               </div>
+
+              {/* RIGHT: Advocate Photo */}
+              <div className="flex justify-center md:justify-end">
+                <div className="relative h-[340px] w-[260px] md:h-[380px] md:w-[300px] overflow-hidden rounded-2xl border border-slate-200 shadow-sm bg-white">
+                  <Image
+                    src="/images/advocate.jpg"
+                    alt="Advocate Dharmendra Singh Dang"
+                    fill
+                    sizes="(max-width: 768px) 260px, 300px"
+                    priority
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+
             </div>
           </Container>
         </section>
